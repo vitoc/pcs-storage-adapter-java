@@ -26,6 +26,33 @@ Dependencies
 * [Azure Cosmos DB account](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)
   with API type DocumentDB
 
+## Provisioning a Cosmos DB instance for development via an ARM template with Azure CLI 2.0
+
+This repository contains an 
+[ARM template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) 
+that provisions a Cosmos DB instance with 
+[Strong](https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
+consistency in the West US region.
+If you're developing this storage adapter on a daily basis and have limited Azure credits 
+on a dev / sandbox subscription, you may want to provision a Cosmos DB instance only when 
+development work starts for the day and deprovision it when you're done. This is made easier
+with this template and 
+[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest). 
+To provision:
+
+```
+cd .\scripts\armtemplates\dev
+az login
+az group create --name ExampleGroup --location "West US"
+az group deployment create --name ExampleDeployment --resource-group ExampleGroup --template-file template.json --parameters parameters.json
+```
+
+To deprovision:
+
+```
+az group delete -n ExampleGroup 
+```
+
 How to use the microservice
 ===========================
 ## Quickstart - Running the service with Docker
