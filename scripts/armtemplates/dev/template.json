@@ -10,7 +10,6 @@
     "variables": {},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/dc89d0d8-b24a-4590-9256-44e4e1b75820/resourceGroups/pcs/providers/Microsoft.DocumentDB/databaseAccounts/pcs'.",
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('databaseAccounts_pcs_name')]",
